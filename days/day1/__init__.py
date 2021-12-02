@@ -8,7 +8,7 @@ def windowed_comparison(window_size: int):
 
     tot_increases = 0
 
-    for num in open('day1/data', 'r'):
+    for num in open('days/day1/data', 'r'):
         if window[window_size - 1]:  # Skip first <window_size> values to build initial window
             if int(num) > window[slider]: 
                 tot_increases += 1
@@ -17,6 +17,5 @@ def windowed_comparison(window_size: int):
 
     return tot_increases
 
-if __name__ == '__main__':
-    print(f'part 1: {windowed_comparison(1)}')
-    print(f'part 2: {windowed_comparison(3)}')
+def solve():
+    return windowed_comparison(1), windowed_comparison(3)
