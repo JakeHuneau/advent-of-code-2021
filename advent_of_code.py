@@ -41,7 +41,7 @@ def test(day):
         runtime(days[day-1])
     except IndexError:
         print("This day is not available. Days 1-25 are available.")
-        
+
 if __name__ == '__main__':
     try:
         day = int(sys.argv[1])
