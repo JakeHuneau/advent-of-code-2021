@@ -8,7 +8,7 @@ def windowed_comparison(window_size: int):
 
     tot_increases = 0
 
-    for num in open('days/day1/data', 'r'):
+    for num in open('../input/day1', 'r'):
         if window[window_size - 1]:  # Skip first <window_size> values to build initial window
             if int(num) > window[slider]: 
                 tot_increases += 1

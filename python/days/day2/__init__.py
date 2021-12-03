@@ -29,7 +29,7 @@ class Location:
 
 def dive(aim=False):
     location = Location()
-    for movement in open('days/day2/data', 'r'):
+    for movement in open('../input/day2', 'r'):
         location.handle_movement(movement, aim)
     return location.product()
 

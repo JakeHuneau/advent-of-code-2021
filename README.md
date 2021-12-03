@@ -2,11 +2,17 @@
 
 Author: Jake Huneau (jakehuneau@yahoo.com)
 
-Can run right from command line with python like `python advent_of_code.py <day>` or build through docker like
+# Python
+
+Can run right from command line with python like `python advent_of_code.py <day>` while in `python` directory or build through docker like
 
 ```
-docker build --tag advent-of-code .
+docker build --tag advent-of-code -f Dockerfile.python .
 docker run -e day=<day> advent-of-code
 ```
 
 If running with python, you will need at least version 3.10 since pattern matching is used.
+
+# Rust
+
+coming later
