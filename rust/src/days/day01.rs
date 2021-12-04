@@ -5,7 +5,7 @@ use std::fs::File;
 use std::io::{BufRead, BufReader};
 
 pub fn solve() -> SolutionPair {
-    let numbers: Vec<u32> = read_to_string("../../input/day1")
+    let numbers: Vec<u32> = read_to_string("../input/day1")
         .unwrap()
         .lines()
         .map(|x| x.parse().unwrap())
