@@ -1,8 +1,6 @@
 #![allow(unused)]
 use crate::{Solution, SolutionPair};
 use std::fs::read_to_string;
-use std::fs::File;
-use std::io::{BufRead, BufReader};
 
 pub fn solve() -> SolutionPair {
     let numbers: Vec<u32> = read_to_string("../input/day1")
