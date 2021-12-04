@@ -8,11 +8,15 @@ Can run right from command line with python like `python advent_of_code.py <day>
 
 ```
 docker build --tag advent-of-code -f Dockerfile.python .
-docker run -e day=<day> advent-of-code
+docker run -e day=<day> advent-of-code:latest
 ```
 
 If running with python, you will need at least version 3.10 since pattern matching is used.
 
 # Rust
+Recomment running with Docker:
 
-coming later
+```
+docker build --tag advent-of-code-rust -f Dockerfile.rust .
+docker run -e day=<day> advent-of-code-rust:latest
+```
