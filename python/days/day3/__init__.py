@@ -1,7 +1,4 @@
 # --- Day 3: Binary Diagnostic ---
-from types import EllipsisType
-
-
 def get_input():
     return [line.strip() for line in open("../input/day3", "r")]
 
