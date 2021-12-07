@@ -1,34 +1,24 @@
-from collections import defaultdict
-
-def get_data():
+def get_num_fish(days):
     """
-    Breaks the input into a dict that counts the number of fish at each age
+    Using an that tracks how many fish are at each age, decrease the
+    age each day, and if the age is 0 after a day finishes, cycle it over
     """
-    fish_timers = defaultdict(lambda: 0)
+    init_age = 8
+    reset_age = 6
+    fish_timers = [0] * (init_age + 1)
     for line in open("../input/day6", 'r'):
         timers = line.split(',')
         for timer in timers:
             fish_timers[int(timer)] += 1
-    return fish_timers
 
-def get_num_fish(days):
-    """
-    Using a dict that tracks how many fish are at each age, decrease the
-    age each day, and if the age is -1 at the end of the day, that fish
-    has a baby and goes back to age 6
-    """
-    timers = get_data()
-    init_age = 8
-    reset_age = 6
-    delivery_age = -1
     for _ in range(days):
-        for age in range(init_age + 1):
-            timers[age - 1] += timers[age]
-            timers[age] = 0
-        timers[reset_age] += timers[delivery_age]
-        timers[init_age] += timers[delivery_age]
-        timers[delivery_age] = 0
-    return sum(timers.values())
+        fish_deliveries = fish_timers[0]
+        for age in range(1, init_age + 1):
+            fish_timers[age - 1] = fish_timers[age]
+        fish_timers[reset_age] += fish_deliveries
+        fish_timers[init_age] = fish_deliveries
+
+    return sum(fish_timers)
 
 def solve():
     return get_num_fish(80), get_num_fish(256)
