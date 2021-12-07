@@ -31,16 +31,16 @@ def solve() -> tuple[int, int]:
 
     total_fuel_part_1 = 0
     total_fuel_part_2_floor = 0
-    total_fueld_part_2_ceil = 0
+    total_fuel_part_2_ceil = 0
 
     for crab in crabs:
         total_fuel_part_1 += abs(crab - median_crab)
         total_fuel_part_2_floor += part_2_cost(abs(crab - mean_crab_floor))
         if (mean_crab_floor != mean_crab_ceil):
-            total_fueld_part_2_ceil += part_2_cost(abs(crab - mean_crab_ceil))
+            total_fuel_part_2_ceil += part_2_cost(abs(crab - mean_crab_ceil))
 
     if (mean_crab_floor != mean_crab_ceil):
-        part_2_fuel_cost = min(total_fuel_part_2_floor, total_fueld_part_2_ceil)
+        part_2_fuel_cost = min(total_fuel_part_2_floor, total_fuel_part_2_ceil)
     else:
         part_2_fuel_cost = total_fuel_part_2_floor
 
