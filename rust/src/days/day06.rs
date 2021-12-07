@@ -15,7 +15,10 @@ pub fn solve() -> SolutionPair {
 
     let part_1_solution = get_num_fish(80, fish_timers);
     let part_2_solution = get_num_fish(256 - 80, fish_timers);
-    (Solution::BigUInt(part_1_solution), Solution::BigUInt(part_2_solution))
+    (
+        Solution::BigUInt(part_1_solution),
+        Solution::BigUInt(part_2_solution),
+    )
 }
 
 fn get_num_fish(days: u32, fish_timers: &mut [u128; MAX_AGE + 1]) -> u128 {
