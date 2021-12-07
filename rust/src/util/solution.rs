@@ -5,6 +5,7 @@ pub enum Solution {
     Int(i64),
     UInt(u64),
     Str(String),
+    BigUInt(u128),
 }
 
 impl Display for Solution {
@@ -12,6 +13,7 @@ impl Display for Solution {
         match self {
             Int(i) => i.fmt(f),
             UInt(u) => u.fmt(f),
+            BigUInt(b) => b.fmt(f),
             Str(s) => s.fmt(f),
         }
     }
