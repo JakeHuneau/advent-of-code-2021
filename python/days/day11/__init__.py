@@ -1,5 +1,7 @@
 from itertools import product
-from pprint import pprint
+from math import inf
+import operator
+from functools import reduce
 
 EnergyLevels = list[list[int]]
 
@@ -11,7 +13,7 @@ def single_step(energy_levels: EnergyLevels) -> int:
     need_to_check = True
     for i, j in product(range(len(energy_levels)), range(len(energy_levels[0]))):
         # First increase everything by 1
-        if energy_levels[i][j] < 0:
+        if energy_levels[i][j] == -inf:
             energy_levels[i][j] = 1
         else:
             energy_levels[i][j] += 1
@@ -21,7 +23,7 @@ def single_step(energy_levels: EnergyLevels) -> int:
             if energy_levels[i][j] > 9:
                 need_to_check = True
                 flashes += 1
-                energy_levels[i][j] = -1000 # Reset to super low value
+                energy_levels[i][j] = -inf # Reset to value that will never be at 0
                 for neighbor in [(i-1, j-1), (i-1, j), (i-1, j+1), (i, j-1), (i, j+1), (i+1, j-1), (i+1, j), (i+1, j+1)]:
                     if neighbor[0] < 0 or neighbor[1] < 0:
                         continue
@@ -35,11 +37,7 @@ def first_full_flash(energy_levels: EnergyLevels) -> int:
     steps = 0
     while True:
         full_flash = True
-        for i, j in product(range(len(energy_levels)), range(len(energy_levels[0]))):
-            if energy_levels[i][j] > 0:
-                full_flash = False
-                break
-        if full_flash:
+        if all(all(l < 0 for l in energy_level) for energy_level in energy_levels):
             return steps
         single_step(energy_levels)
         steps += 1
