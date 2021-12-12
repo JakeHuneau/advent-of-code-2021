@@ -1,10 +1,15 @@
 #![allow(unused)]
 use crate::{Solution, SolutionPair};
-use std::fs::read_to_string;
 use std::cmp;
+use std::fs::read_to_string;
 
 pub fn solve() -> SolutionPair {
-    let mut crabs: Vec<isize> = read_to_string("../input/day7").unwrap().trim_end().split(',').map(|x| x.parse::<isize>().unwrap()).collect::<Vec<isize>>();
+    let mut crabs: Vec<isize> = read_to_string("../input/day7")
+        .unwrap()
+        .trim_end()
+        .split(',')
+        .map(|x| x.parse::<isize>().unwrap())
+        .collect::<Vec<isize>>();
     crabs.sort();
 
     let median_crab = median(&crabs);
@@ -32,7 +37,10 @@ pub fn solve() -> SolutionPair {
         total_fuel_part_2 = total_fuel_part_2_floor;
     }
 
-    (Solution::UInt(total_fuel_part_1), Solution::UInt(total_fuel_part_2))
+    (
+        Solution::UInt(total_fuel_part_1),
+        Solution::UInt(total_fuel_part_2),
+    )
 }
 
 fn mean(data: &Vec<isize>) -> f32 {

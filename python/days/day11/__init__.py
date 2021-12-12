@@ -1,6 +1,5 @@
 from itertools import product
 from math import inf
-import operator
 from functools import reduce
 
 EnergyLevels = list[list[int]]
