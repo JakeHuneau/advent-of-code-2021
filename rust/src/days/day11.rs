@@ -109,5 +109,8 @@ pub fn solve() -> SolutionPair {
         energy_levels.step();
     }
 
-    (Solution::UInt(energy_levels.flashes), Solution::UInt(energy_levels.rounds))
+    (
+        Solution::UInt(energy_levels.flashes),
+        Solution::UInt(energy_levels.rounds),
+    )
 }
