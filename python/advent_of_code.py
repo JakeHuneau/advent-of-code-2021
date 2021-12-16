@@ -42,15 +42,12 @@ def test(day, tests=0):
     days = [day1, day2, day3, day4, day5, day6, day7, day8, day9, day10,
         day11, day12, day13, day14, day15, day16, day17, day18, day19, 
         day20, day21, day22, day23, day24, day25]
-    try:
-        if tests > 0:
-            runtimes = list(map(lambda x: runtime(days[day], True), range(tests)))
-            print(f'Average Runtime for {tests} runs: {mean(runtimes) * 1000:.3f} ± {stdev(runtimes):.3f} ms')
-        else:
-            print(f'Day {day+1:>02}: ', end='')
-            return runtime(days[day])
-    except IndexError:
-        print("This day is not available. Days 1-25 are available.")
+    if tests > 0:
+        runtimes = list(map(lambda x: runtime(days[day], True), range(tests)))
+        print(f'Average Runtime for {tests} runs: {mean(runtimes) * 1000:.3f} ± {stdev(runtimes):.3f} ms')
+    else:
+        print(f'Day {day+1:>02}: ', end='')
+        return runtime(days[day])
 
 
 if __name__ == '__main__':
@@ -60,9 +57,12 @@ if __name__ == '__main__':
     elif len(sys.argv) > 1:
         try:
             day = int(sys.argv[1])
+            if day > 25 or day < 1:
+                raise ValueError("This day is not available. Days 1-25 are available.")
+            if len(sys.argv) == 3:
+                test(day-1, int(sys.argv[2]))
+            else:
+                test(day-1)
         except ValueError:
             print("Format is `python advent_of_code.py <day>` where <day> is a number from 1-25")
-        if len(sys.argv) == 3:
-            test(day-1, int(sys.argv[2]))
-        else:
-            test(day-1)
+        
